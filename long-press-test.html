@@ -5,10 +5,30 @@
 </head>
 <body>
 <div id="lp">Long press on me!</div>
+<div id="log"></div>
 
 <script type="text/javascript">
 
+let id;
+const LONGPRESS = 700;
+const lp = document.getElementById('lp');
+const log = document.getElementById('log');
 
+function mouseDown() {
+  id = window.setTimeout(longPress, LONGPRESS);
+}
+
+function mouseUp() {
+  window.clearTimeout(id);
+  id = undefined;
+}
+
+function longPress() {
+  log.innerText = 'Long press';
+}
+
+lp.addEventListener('mousedown', mouseDown);
+lp.addEventListener('mouseup', mouseUp);
 
 </script>
 
